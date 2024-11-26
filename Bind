@@ -1,0 +1,85 @@
+--Made by donjosx/left eyes, please give me the credit if you showcase, thanks!
+local AutoExecuteOnJoined = queueonteleport or queue_on_teleport
+
+if AutoExecuteOnJoined then
+    AutoExecuteOnJoined([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        if game.PlaceId ~= 74169485398268 then return end
+        for _, v in pairs(workspace:GetDescendants()) do
+            if v:IsA("Model") and v.Name:find("Shadow") then
+                v:Destroy()
+            end
+            
+            if v:IsA("Model") and v.Name:find("rock chain glove_defaultglove_cell") then
+                local player = game.Players.LocalPlayer
+                if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = v.CFrame
+                    if v.Parent:FindFirstChild("ClickDetector") then
+                        fireclickdetector(v.Parent.ClickDetector)
+                    end
+                end
+            end
+        end
+    ]])
+else
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Error",
+        Text = "Your executor cannot auto execute on joined.",
+        Icon = "rbxassetid://7733658504",
+        Duration = 5
+    })
+end
+if game.PlaceId ~= 74169485398268 then
+    local AutoExecuteOnJoined = queueonteleport or queue_on_teleport
+
+    if AutoExecuteOnJoined then
+        AutoExecuteOnJoined([[
+            if not game:IsLoaded() then
+                game.Loaded:Wait()
+            end
+            
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("Model") and v.Name:find("Shadow") then
+                    v:Destroy()
+                end
+                
+                if v:IsA("Model") and v.Name:find("rock chain glove_defaultglove_cell") then
+                    local player = game.Players.LocalPlayer
+                    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                        player.Character.HumanoidRootPart.CFrame = v.CFrame
+                        if v.Parent:FindFirstChild("ClickDetector") then
+                            fireclickdetector(v.Parent.ClickDetector)
+                        end
+                    end
+                end
+            end
+        ]])
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Error",
+            Text = "Your executor cannot auto execute on joined.",
+            Icon = "rbxassetid://7733658504",
+            Duration = 5
+        })
+    end
+    
+    game:GetService("TeleportService"):Teleport(74169485398268)
+else
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v.Name:find("Shadow") then
+            v:Destroy()
+        end
+        
+        if v.Name:find("rock chain glove_defaultglove_cell") then
+            local player = game.Players.LocalPlayer
+            if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                player.Character.HumanoidRootPart.CFrame = v.CFrame
+                if v.Parent:FindFirstChild("ClickDetector") then
+                    fireclickdetector(v.Parent.ClickDetector)
+                end
+            end
+        end
+    end
+end
